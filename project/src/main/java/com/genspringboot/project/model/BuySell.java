@@ -13,7 +13,6 @@ import javax.persistence.ManyToOne;
 import org.hibernate.validator.constraints.Range;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 @Entity(name = "BuySell")
@@ -22,11 +21,11 @@ public class BuySell {
     @GeneratedValue
     private Integer id;
     @Range(min = 0)
-    private int monto;
+    private Integer monto;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaCompra;
 
-    @JsonManagedReference
+    //@JsonManagedReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;

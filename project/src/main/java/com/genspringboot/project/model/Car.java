@@ -12,7 +12,6 @@ import javax.persistence.ManyToMany;
 
 import org.hibernate.validator.constraints.Range;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity(name="Car")
 public class Car {
@@ -26,7 +25,7 @@ public class Car {
     @Range(min = 0)
     private int valor;
 
-    @JsonIgnore
+    //@JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "carSell", joinColumns = @JoinColumn(name = "car_id"),
     inverseJoinColumns = @JoinColumn(name = "buySell_id"))

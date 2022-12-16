@@ -9,8 +9,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.OneToOne;
 
 
@@ -18,7 +16,7 @@ import javax.persistence.OneToOne;
 public class User {
     @Id
     @GeneratedValue
-    private Integer id;
+    private int id;
 
     private String name;
 
@@ -27,11 +25,11 @@ public class User {
     @Column(unique = true)
     private String correo;
 
-    @JsonBackReference
+    //@JsonBackReference
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private License license;
 
-    @JsonBackReference
+    //@JsonBackReference
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<BuySell> buySell;
     
