@@ -1,5 +1,6 @@
 package com.genspringboot.project.controller;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @CrossOrigin("*")
 @RestController
@@ -37,10 +38,15 @@ public class UserController {
         return userService.save(user);
     }
 
-    @DeleteMapping("/deleteuser/{id}")
+    @DeleteMapping("/deleteUser/{id}")
     public void deleteUser(@PathVariable Integer id) {
         userService.delete(id);
     }
+
+    @RequestMapping("allUser")
+    public List<User> getAllUsers() {
+        List<User> listaUser = userService.getAllUsers();
+        return listaUser;
+
+    }
 }
-
-
